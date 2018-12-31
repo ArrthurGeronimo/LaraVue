@@ -23,7 +23,7 @@
 
                   <tr v-for="user in users" :key="user.id">
                     <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
+                    <td>{{user.name }}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.type | capitalize}}</td>
                     <td>{{user.created_at | myDate}}</td>
@@ -101,7 +101,7 @@
               </form>
             </div>
           </div>
-        </div>
+        </div> <!--/modal -->
 
     </div><!-- /.container -->
 </template>

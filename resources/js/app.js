@@ -35,23 +35,38 @@ Vue.use(VueProgressBar, {
   height: '3px'
 })
 
+// FILTROS
+Vue.filter('capitalize', function(value){
+  return value.charAt(0).toUpperCase()+value.slice(1);
+});
+Vue.filter('myDate', function(value){
+  return moment(value).subtract(10, 'days').calendar();
+});
+Vue.filter('upperCase', function(value){
+  return value.toUpperCase();
+});
+
+// ROTAS
 let routes = [
+  { path: '/home', component: require('./components/Home.vue') },
   { path: '/dashboard', component: require('./components/Dashboard.vue') },
   { path: '/profile', component: require('./components/Profile.vue') },
-  { path: '/users', component: require('./components/Users.vue') }
+  { path: '/users', component: require('./components/Users.vue') },
+  { path: '/experimento', name: 'experimento', component: require('./components/Experimento.vue'), props: true },
+
+  { path: '/experimentos', name: 'experimentos', component: require('./components/Experimentos.vue'),
+    children:[
+      { path: 'detalhes', name: 'experimento-detalhes', component: require('./components/Experimento.vue') },
+    ] 
+  },
+
+  { path: '*', component: require('./components/Error404.vue') }
 ]
 
 const router = new VueRouter({
 	mode: 'history',
   	routes // short for `routes: routes`
 })
-
-Vue.filter('capitalize', function(value){
-	return value.charAt(0).toUpperCase()+value.slice(1);
-});
-Vue.filter('myDate', function(value){
-	return moment(value).subtract(10, 'days').calendar();
-});
 
 window.Fire = new Vue();
 

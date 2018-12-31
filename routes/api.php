@@ -17,4 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResources(['user' => 'API\UserController']);
+Route::apiResources([
+	'user' => 'API\UserController',
+	'experimento' => 'API\ExperimentoController',
+	'experimento_faixa' => 'API\ExperimentoFaixaController'
+]);
+
+Route::get('carrega_informacoes_do_experimento_faixa/{experimento_id}', 'API\ExperimentoFaixaController@busca');
