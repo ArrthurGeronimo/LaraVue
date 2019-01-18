@@ -100,7 +100,9 @@
                                 </div>
                                 <div class="card-body">
                                     
-                                
+<draggable :list="list" class="dragArea">
+                <div v-for="element in list">{{element.name}}</div>
+             </draggable>
     
                                 </div>
                             </div>
@@ -112,12 +114,19 @@
 </template>
 
 <script>
+    import draggable from 'vuedraggable';
     export default {
+        components: {
+            draggable,
+        },
         props: ['experimentoPai', 'experimentoFaixa'],
         data(){
             return {
             editmode: false,
             teste_id: '2',
+            list:[{name:"John"}, 
+                {name:"Joao"}, 
+                {name:"Jean"} ],
             form: new Form({
               id: '',
               experimento_id: '',
@@ -181,6 +190,12 @@
                   this.$Progress.fail();
                 });
               },
+              add: function(){
+                this.list.push({name:'Juan'});
+            },
+            replace: function(){
+                this.list=[{name:'Edgard'}]
+            }
         },
         created() {
             console.log('Componente Tratamento Faixa montado.');

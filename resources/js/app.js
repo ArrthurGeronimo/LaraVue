@@ -35,6 +35,17 @@ Vue.use(VueProgressBar, {
   height: '3px'
 })
 
+// ElementUi
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/pt-br'
+Vue.use(ElementUI, { locale })
+Vue.use(ElementUI)
+// Mask
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+
+
 // FILTROS
 Vue.filter('capitalize', function(value){
   return value.charAt(0).toUpperCase()+value.slice(1);
@@ -49,6 +60,8 @@ Vue.filter('upperCase', function(value){
 // ROTAS
 let routes = [
   { path: '/home', component: require('./components/Home.vue') },
+  { path: '/sensor', component: require('./components/Sensor.vue') },
+  { path: '/sensor_clima', name: 'sensor_clima', component: require('./components/SensorClima.vue') },
   { path: '/dashboard', component: require('./components/Dashboard.vue') },
   { path: '/profile', component: require('./components/Profile.vue') },
   { path: '/users', component: require('./components/Users.vue') },

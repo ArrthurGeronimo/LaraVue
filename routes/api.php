@@ -23,4 +23,12 @@ Route::apiResources([
 	'experimento_faixa' => 'API\ExperimentoFaixaController'
 ]);
 
+Route::apiResources([
+	'sensor' => 'API\SensorController',
+	'sensor_clima' => 'API\SensorClimaController',
+	'sensor_solo' => 'API\SensorSoloController'
+]);
+
+Route::get('carrega_informacoes_dos_sensores_de_clima/{sensor_id}', 'API\SensorClimaController@busca');
+
 Route::get('carrega_informacoes_do_experimento_faixa/{experimento_id}', 'API\ExperimentoFaixaController@busca');
